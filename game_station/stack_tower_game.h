@@ -3,6 +3,6 @@
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
-void stack_tower_gameplay();
+void stackTowerGameplay();
 
 #endif

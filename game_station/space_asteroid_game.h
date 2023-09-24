@@ -9,16 +9,16 @@
 #include <LiquidCrystal.h>
 
 extern LiquidCrystal lcd;
-extern int spaceship_Y_location;
-extern int spaceship_X_location;
-extern int asteroid_Y_location;
-extern int asteroid_X_location;
-extern int divider_index;
-extern int asteroid_speed;
-extern int players_game_points;
-extern bool game_over;
+extern int spaceshipYLocation;
+extern int spaceshipXLocation;
+extern int asteroidYLocation;
+extern int asteroidXLocation;
+extern int dividerIndex;
+extern int asteroidSpeed;
+extern int playersGamePoints;
+extern bool gameOver;
 
-static byte space_ship_char[] = {
+const byte spaceShipChar[] = {
     B11000,
     B01000,
     B01100,
@@ -28,7 +28,7 @@ static byte space_ship_char[] = {
     B01000,
     B11000};
 
-static byte asteroid_char[] = {
+const byte asteroidChar[] = {
     B00000,
     B01100,
     B01110,
@@ -38,13 +38,13 @@ static byte asteroid_char[] = {
     B00110,
     B00000};
 
-void print_spaceship(int y_axis);
-void print_asteroid(int y_axis, int x_axis);
-void print_game_over_screen();
-void refresh_asteroid_location();
-void print_game_points();
-void check_for_collision();
-void space_asteroid_gameplay();
-void reset_game_variables();
+void printSpaceship(int yAxis);
+void printAsteroid(int yAxis, int xAxis);
+void printGameOverScreen();
+void refreshAsteroidLocation();
+void printGamePoints();
+void checkForCollision();
+void spaceAsteroidGameplay();
+void resetGameVariables();
 
 #endif

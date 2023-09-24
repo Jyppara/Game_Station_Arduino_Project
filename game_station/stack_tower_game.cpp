@@ -1,7 +1,7 @@
 #include "game_station.h"
 #include <LiquidCrystal.h>
 
-void stack_tower_gameplay()
+void stackTowerGameplay()
 {
     // print game name to test'
     lcd.clear();

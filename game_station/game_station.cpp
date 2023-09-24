@@ -1,14 +1,14 @@
 #include "game_station.h"
 #include "space_asteroid_game.h"
 
-String available_games[] = {"Stack Tower", "Space Asteroid"};
-int rehresh_index = 0;
-int rehresh_rate = 200;
-int game_index = 0;
+const String availableGames[] = {"Stack Tower", "Space Asteroid"};
+int rehreshIndex = 0;
+int rehreshRate = 200;
+int gameIndex = 0;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 200;
 
-void intro_screen()
+void introScreen()
 {
     // This function is used to print the intro screen on the LCD screen
     // and wait for the player to press the button to start the game.
@@ -22,18 +22,18 @@ void intro_screen()
     lcd.clear();
 }
 
-void read_button_press()
+void readButtonPress()
 {
     // This function is used to read the button press and make sure that
     // the button press is not registered multiple times in a row.
     if (digitalRead(BUTTON_PIN) == HIGH && millis() - lastDebounceTime > debounceDelay)
     {
-        spaceship_Y_location = !spaceship_Y_location;
+        spaceshipYLocation = !spaceshipYLocation;
         lastDebounceTime = millis();
     }
 }
 
-void choose_game()
+void chooseGame()
 {
     // This function is used to print the available games on the LCD screen
     // and wait for the player to choose a game and then starts the game.
@@ -47,28 +47,28 @@ void choose_game()
         lcd.setCursor(0, 0);
         lcd.print("Choose a game:");
         lcd.setCursor(0, 1);
-        lcd.print(String(game_index + 1) + "." + available_games[game_index]);
-        if (rehresh_index > rehresh_rate)
+        lcd.print(String(gameIndex + 1) + "." + availableGames[gameIndex]);
+        if (rehreshIndex > rehreshRate)
         {
             lcd.clear();
-            rehresh_index = 0;
-            game_index++;
-            if (game_index > 1)
+            rehreshIndex = 0;
+            gameIndex++;
+            if (gameIndex > 1)
             {
-                game_index = 0;
+                gameIndex = 0;
             }
         }
-        rehresh_index++;
+        rehreshIndex++;
     }
     lcd.clear();
-    if (game_index == 0)
+    if (gameIndex == 0)
     {
-        stack_tower_gameplay();
+        stackTowerGameplay();
     }
-    else if (game_index == 1)
+    else if (gameIndex == 1)
     {
-        space_asteroid_gameplay();
+        spaceAsteroidGameplay();
     }
-    game_index = 0;
-    rehresh_index = 0;
+    gameIndex = 0;
+    rehreshIndex = 0;
 }

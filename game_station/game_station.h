@@ -9,11 +9,11 @@
 #include <LiquidCrystal.h>
 
 extern LiquidCrystal lcd;
-extern String available_games[];
+extern const String availableGames[];
 
-void stack_tower_gameplay();
-void intro_screen();
-void read_button_press();
-void choose_game();
+void stackTowerGameplay();
+void introScreen();
+void readButtonPress();
+void chooseGame();
 
 #endif

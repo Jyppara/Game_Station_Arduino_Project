@@ -14,10 +14,10 @@ void setup()
 {
   lcd.begin(16, 2);
   pinMode(BUTTON_PIN, INPUT);
-  intro_screen();
+  introScreen();
 }
 
 void loop()
 {
-  choose_game();
+  chooseGame();
 }
