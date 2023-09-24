@@ -1,0 +1,31 @@
+22/9/23
+
+    Starting the project.
+    Wiring ready.
+    First testing the wiring with a template code. Push button isn't reacting. LCD is working fine.
+    Pushbutton wiring fixed. Template code works perfectly.
+    Testing LCD screen functionality with own test code.
+    Pushbutton state stays HIGH even when not pushing the button, but keeping finger close to it.
+    10k pull down resistor fixed the issue.
+    Started coding the first game: Space Ship- game.
+    First game has now one moving asteroid and the spaceship.
+    Game stops when the asteroid hits the spaceship and displays the score on the Game Over- screen.
+    Code is not organized properly yet.
+
+23/9/23
+
+    Added y-axis movement to asteroid to make the game more difficult.
+    Also the asteroid keeps getting faster as the player get more points.
+    Having issues uploading program to the Arduino.
+    "avrdude: stk500_recv(): programmer is not responding".
+
+24/9/23
+
+    Restaring the computer and changing the USB port fixed the uploading issue.
+    Fixed the issue when the asteroid never changed side completely, only flashed on the other row.
+    Modified the spaceship and the asteroid with own character styles so they look more gamish.
+    Reformatting code. Added .cpp and .h file for the first game. Making functions and variable
+    names more informative. Adding comments where necessary. Cleaning code.
+
+
+
