@@ -26,6 +26,12 @@
     Modified the spaceship and the asteroid with own character styles so they look more gamish.
     Reformatting code. Added .cpp and .h file for the first game. Making functions and variable
     names more informative. Adding comments where necessary. Cleaning code.
+    Added a "Development" branch to repository for easier development version control.
+    Added game_station.cpp/.h files for shared variables and functions.
+    Started developing a new game: Tower Stack- game.
+    Implemented a start screen and a menu for choosing a game to be played.
+    Fixed issue where pressing the button for a long time generated unexpected behaviour.
+    Now when asked to press the button the program waits until the button is released.
 
 
 

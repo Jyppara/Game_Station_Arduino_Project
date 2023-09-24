@@ -1,4 +1,5 @@
 #include "space_asteroid_game.h"
+#include "game_station.h"
 #include <LiquidCrystal.h>
 
 #define BUTTON_PIN 2
@@ -11,10 +12,7 @@ int asteroid_X_location = 16;
 int divider_index = 0;
 int asteroid_speed = 4;
 int players_game_points = 0;
-int display_row = 0;
 bool game_over = false;
-unsigned long lastDebounceTime = 0;
-unsigned long debounceDelay = 200;
 
 void print_spaceship(int y_axis)
 {
@@ -30,20 +28,6 @@ void print_asteroid(int y_axis, int x_axis)
     lcd.createChar(1, asteroid_char);
     lcd.setCursor(x_axis, y_axis);
     lcd.write(byte(1));
-}
-
-void intro_screen()
-{
-    // This function is used to print the intro screen on the LCD screen
-    // and wait for the player to press the button to start the game.
-    while (digitalRead(2) == LOW)
-    {
-        lcd.setCursor(0, 0);
-        lcd.print("Welcome to Space");
-        lcd.setCursor(0, 1);
-        lcd.print("Press to start!");
-    }
-    lcd.clear();
 }
 
 void reset_game_variables()
@@ -73,8 +57,14 @@ void print_game_over_screen()
         delay(150);
         lcd.scrollDisplayLeft();
     }
-    lcd.clear();
     reset_game_variables();
+    // This while loop is used to make sure that the player has released the button
+    while (digitalRead(2) == HIGH)
+    {
+        delay(150);
+        lcd.scrollDisplayLeft();
+    }
+    lcd.clear();
 }
 
 void refresh_asteroid_location()
@@ -171,17 +161,6 @@ void check_for_collision()
             lcd.clear();
             delay(100);
         }
-    }
-}
-
-void read_button_press()
-{
-    // This function is used to read the button press and make sure that
-    // the button press is not registered multiple times in a row.
-    if (digitalRead(BUTTON_PIN) == HIGH && millis() - lastDebounceTime > debounceDelay)
-    {
-        spaceship_Y_location = !spaceship_Y_location;
-        lastDebounceTime = millis();
     }
 }
 

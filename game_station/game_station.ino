@@ -7,6 +7,8 @@
 #include <LiquidCrystal.h>
 #include <Arduino.h>
 #include "space_asteroid_game.h"
+#include "game_station.h"
+#include "stack_tower_game.h"
 
 void setup()
 {
@@ -17,5 +19,5 @@ void setup()
 
 void loop()
 {
-  space_asteroid_gameplay();
+  choose_game();
 }
