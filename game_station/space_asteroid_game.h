@@ -37,12 +37,8 @@ const byte asteroidChar[] = {
     B01110,
     B00110,
     B00000};
-
-void printSpaceship(int yAxis);
-void printAsteroid(int yAxis, int xAxis);
-void printGameOverScreen();
+    
 void refreshAsteroidLocation();
-void printGamePoints();
 void checkForCollision();
 void spaceAsteroidGameplay();
 void resetGameVariables();

@@ -14,22 +14,6 @@ int asteroidSpeed = 4;
 int playersGamePoints = 0;
 bool gameOver = false;
 
-void printSpaceship(int yAxis)
-{
-    // This function is used to print the spaceship on the LCD screen.
-    lcd.createChar(0, spaceShipChar);
-    lcd.setCursor(0, yAxis);
-    lcd.write(byte(0));
-}
-
-void printAsteroid(int yAxis, int xAxis)
-{
-    // This function is used to print the asteroid on the LCD screen.
-    lcd.createChar(1, asteroidChar);
-    lcd.setCursor(xAxis, yAxis);
-    lcd.write(byte(1));
-}
-
 void resetGameVariables()
 {
     // This function is used to reset the game variables when the game is over.
@@ -41,30 +25,6 @@ void resetGameVariables()
     asteroidSpeed = 4;
     playersGamePoints = 0;
     gameOver = false;
-}
-
-void printGameOverScreen()
-{
-    // This function is used to print the game over screen on the LCD screen
-    // when the game is over and reset the game variables.
-    lcd.clear();
-    lcd.setCursor(14, 0);
-    lcd.print("Game over! Score:" + String(playersGamePoints));
-    lcd.setCursor(14, 1);
-    lcd.print("Press to restart");
-    while (digitalRead(2) == LOW)
-    {
-        delay(150);
-        lcd.scrollDisplayLeft();
-    }
-    resetGameVariables();
-    // This while loop is used to make sure that the player has released the button
-    while (digitalRead(2) == HIGH)
-    {
-        delay(150);
-        lcd.scrollDisplayLeft();
-    }
-    lcd.clear();
 }
 
 void refreshAsteroidLocation()
@@ -111,26 +71,6 @@ void refreshAsteroidLocation()
     }
 }
 
-void printGamePoints()
-{
-    // This function is used to print the game points on the screen.
-    // The function is used to make sure that the game points are always
-    // in the proper location on the screen.
-    if (playersGamePoints < 10)
-    {
-        lcd.setCursor(15, 0);
-    }
-    else if (playersGamePoints < 100)
-    {
-        lcd.setCursor(14, 0);
-    }
-    else
-    {
-        lcd.setCursor(13, 0);
-    }
-    lcd.print(playersGamePoints);
-}
-
 void checkForCollision()
 {
     // This function is used to check if the spaceship and the asteroid
@@ -142,8 +82,8 @@ void checkForCollision()
         for (int i = 0; i < 5; i++)
         {
             lcd.clear();
-            printSpaceship(spaceshipYLocation);
-            printAsteroid(asteroidYLocation, asteroidXLocation);
+            printSpecialChar(spaceshipYLocation, spaceshipXLocation, spaceShipChar, 0);
+            printSpecialChar(asteroidYLocation, asteroidXLocation, asteroidChar, 1);
             if (playersGamePoints < 10)
             {
                 lcd.setCursor(15, 0);
@@ -172,11 +112,11 @@ void spaceAsteroidGameplay()
         readButtonPress();
         refreshAsteroidLocation();
         lcd.clear();
-        printSpaceship(spaceshipYLocation);
-        printAsteroid(asteroidYLocation, asteroidXLocation);
-        printGamePoints();
+        printSpecialChar(spaceshipYLocation, spaceshipXLocation, spaceShipChar, 0);
+        printSpecialChar(asteroidYLocation, asteroidXLocation, asteroidChar, 1);
+        printGamePoints(playersGamePoints, 0);
         checkForCollision();
         delay(50); // This delay is used to manipulate the speed of the game.
     }
-    printGameOverScreen();
+    printGameOverScreen(playersGamePoints);
 }

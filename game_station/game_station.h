@@ -11,9 +11,12 @@
 extern LiquidCrystal lcd;
 extern const String availableGames[];
 
+void printSpecialChar(int yAxis, int xAxis, const byte charToPrint[], int byteIndex);
 void stackTowerGameplay();
 void introScreen();
 void readButtonPress();
 void chooseGame();
+void printGamePoints(int playersGamePoints,int yAxis);
+void printGameOverScreen(int playersGamePoints);
 
 #endif

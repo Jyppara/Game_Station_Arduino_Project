@@ -33,5 +33,11 @@
     Fixed issue where pressing the button for a long time generated unexpected behaviour.
     Now when asked to press the button the program waits until the button is released.
 
+25/9/23
 
+    Made the tower chars to the Tower Stack- game. 
+    Made some code relocationing where shared functions between games are only in one file.
+    Infinite stacking implemented and score is visible to the player.
+    The tower stack is now graphically logical.
+    Basic logic of the game is now finised.
 

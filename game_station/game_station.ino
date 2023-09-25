@@ -15,6 +15,7 @@ void setup()
   lcd.begin(16, 2);
   pinMode(BUTTON_PIN, INPUT);
   introScreen();
+  Serial.begin(9600);
 }
 
 void loop()
