@@ -31,7 +31,7 @@ void printGameOverScreen(int playersGamePoints)
         delay(150);
         lcd.scrollDisplayLeft();
     }
-    resetGameVariables();
+    resetAsteroidGameVariables();
     // This while loop is used to make sure that the player has released the button
     while (digitalRead(2) == HIGH)
     {

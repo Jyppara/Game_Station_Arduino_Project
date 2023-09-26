@@ -14,7 +14,7 @@ int asteroidSpeed = 4;
 int playersGamePoints = 0;
 bool gameOver = false;
 
-void resetGameVariables()
+void resetAsteroidGameVariables()
 {
     // This function is used to reset the game variables when the game is over.
     spaceshipYLocation = 0;

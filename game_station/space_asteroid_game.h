@@ -41,6 +41,6 @@ const byte asteroidChar[] = {
 void refreshAsteroidLocation();
 void checkForCollision();
 void spaceAsteroidGameplay();
-void resetGameVariables();
+void resetAsteroidGameVariables();
 
 #endif
