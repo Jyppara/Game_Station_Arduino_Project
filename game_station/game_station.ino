@@ -7,15 +7,18 @@
 #include <LiquidCrystal.h>
 #include <Arduino.h>
 #include "space_asteroid_game.h"
+#include "game_station.h"
+#include "stack_tower_game.h"
 
 void setup()
 {
   lcd.begin(16, 2);
   pinMode(BUTTON_PIN, INPUT);
-  intro_screen();
+  introScreen();
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  space_asteroid_gameplay();
+  chooseGame();
 }

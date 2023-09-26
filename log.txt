@@ -1,4 +1,4 @@
-22/9/23
+22/9/2023
 
     Starting the project.
     Wiring ready.
@@ -12,20 +12,40 @@
     Game stops when the asteroid hits the spaceship and displays the score on the Game Over- screen.
     Code is not organized properly yet.
 
-23/9/23
+23/9/2023
 
     Added y-axis movement to asteroid to make the game more difficult.
     Also the asteroid keeps getting faster as the player get more points.
     Having issues uploading program to the Arduino.
     "avrdude: stk500_recv(): programmer is not responding".
 
-24/9/23
+24/9/2023
 
     Restaring the computer and changing the USB port fixed the uploading issue.
     Fixed the issue when the asteroid never changed side completely, only flashed on the other row.
     Modified the spaceship and the asteroid with own character styles so they look more gamish.
     Reformatting code. Added .cpp and .h file for the first game. Making functions and variable
     names more informative. Adding comments where necessary. Cleaning code.
+    Added a "Development" branch to repository for easier development version control.
+    Added game_station.cpp/.h files for shared variables and functions.
+    Started developing a new game: Tower Stack- game.
+    Implemented a start screen and a menu for choosing a game to be played.
+    Fixed issue where pressing the button for a long time generated unexpected behaviour.
+    Now when asked to press the button the program waits until the button is released.
 
+25/9/2023
 
+    Made the tower chars to the Tower Stack- game. 
+    Made some code relocationing where shared functions between games are only in one file.
+    Infinite stacking implemented and score is visible to the player.
+    The tower stack is now graphically logical.
+    Basic logic of the game is now finised.
+    Made the score number to avoid the row where the tower block
+    is moving so it won't affect the gaming experience by blocking the view.
 
+26/9/2023
+
+    Added increasing difficulty by moving the block faster as the player progresses in the game
+    Made the block start at a random x-axis location each time so the game wouldn't be so predictable.
+    Now the game flashes the game components when player loses.
+    Tower Stack- game ready. Code splitted into logical functions.
