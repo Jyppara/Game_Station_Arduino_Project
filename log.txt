@@ -49,3 +49,9 @@
     Made the block start at a random x-axis location each time so the game wouldn't be so predictable.
     Now the game flashes the game components when player loses.
     Tower Stack- game ready. Code splitted into logical functions.
+
+27/9/2023
+
+    Changed to bigger breadboard. Added a green LED to breadboard.
+    Added green led blink to both games. When player gets a point green led flashes.
+    

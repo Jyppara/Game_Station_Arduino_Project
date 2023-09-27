@@ -5,6 +5,8 @@
 
 #ifndef GAME_STATION_H
 #define GAME_STATION_H
+#define BUTTON_PIN 2
+#define GREEN_LED_PIN 12
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
@@ -18,5 +20,6 @@ void readButtonPress();
 void chooseGame();
 void printGamePoints(int playersGamePoints,int yAxis);
 void printGameOverScreen(int playersGamePoints);
+void greenLedOn(int delayTime);
 
 #endif

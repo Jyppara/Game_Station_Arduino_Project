@@ -1,8 +1,7 @@
 #include "space_asteroid_game.h"
 #include "game_station.h"
 #include <LiquidCrystal.h>
-
-#define BUTTON_PIN 2
+#include <Arduino.h>
 
 LiquidCrystal lcd(11, 9, 6, 5, 4, 3); // RS, E, D4, D5, D6, D7
 int spaceshipYLocation = 0;
@@ -10,6 +9,7 @@ int spaceshipXLocation = 0;
 int asteroidYLocation = 1;
 int asteroidXLocation = 16;
 int dividerIndex = 0;
+int ledIndex = 0;
 int asteroidSpeed = 4;
 int playersGamePoints = 0;
 bool gameOver = false;
@@ -104,6 +104,16 @@ void checkForCollision()
     }
 }
 
+void checkIfAsteroidPassed(int asteroidXLocation){
+
+    if(asteroidXLocation == 15 && gameOver == false && playersGamePoints > 0){
+        digitalWrite(12, HIGH);
+    }
+    if (asteroidXLocation == 12){
+        digitalWrite(12, LOW);
+    }
+}
+
 void spaceAsteroidGameplay()
 {
     // This function is used to run the game.
@@ -116,6 +126,7 @@ void spaceAsteroidGameplay()
         printSpecialChar(asteroidYLocation, asteroidXLocation, asteroidChar, 1);
         printGamePoints(playersGamePoints, 0);
         checkForCollision();
+        checkIfAsteroidPassed(asteroidXLocation);
         delay(50); // This delay is used to manipulate the speed of the game.
     }
     printGameOverScreen(playersGamePoints);

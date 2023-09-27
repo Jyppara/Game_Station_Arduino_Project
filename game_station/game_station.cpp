@@ -126,3 +126,12 @@ void printGamePoints(int playersGamePoints, int yAxis)
     }
     lcd.print(playersGamePoints);
 }
+
+void greenLedOn(int delayTime)
+{
+    // This function is used to make the green LED blink when the player
+    // has pressed the button.
+    digitalWrite(GREEN_LED_PIN, HIGH);
+    delay(delayTime);
+    digitalWrite(GREEN_LED_PIN, LOW);
+}

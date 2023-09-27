@@ -26,7 +26,6 @@ void stackTowerGameplay()
             printMovingTowerBlock();
         }
         checkIfGameOver();
-        delay(300);
     }
     printGameOverScreen(game_points);
     resetTowerGameVariables();
@@ -161,6 +160,7 @@ void checkIfGameOver()
             index = 0;
         }
         movingTowerXLocation = random(0, 16);
+        greenLedOn(400);
     }
     else
     {
