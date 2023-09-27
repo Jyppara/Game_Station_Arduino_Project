@@ -185,6 +185,7 @@ void resetTowerGameVariables()
 void gameOverFlashing()
 {
     // This function is used to flash the components on the LCD screen when the game is over.
+    gameOverMusic();
     for (int i = 0; i < 5; i++)
     {
         lcd.clear();

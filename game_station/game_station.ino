@@ -15,6 +15,7 @@ void setup()
   lcd.begin(16, 2);
   pinMode(BUTTON_PIN, INPUT);
   pinMode(GREEN_LED_PIN, OUTPUT);
+  pinMode(MELODY_PIN, OUTPUT);
   introScreen();
   Serial.begin(9600);
 }
