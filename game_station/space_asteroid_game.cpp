@@ -79,6 +79,7 @@ void checkForCollision()
     if (spaceshipYLocation == asteroidYLocation && spaceshipXLocation == asteroidXLocation)
     {
         gameOver = true;
+        gameOverMusic();
         for (int i = 0; i < 5; i++)
         {
             lcd.clear();
@@ -97,19 +98,22 @@ void checkForCollision()
                 lcd.setCursor(13, 0);
             }
             lcd.print(playersGamePoints);
-            delay(100);
+            delay(200);
             lcd.clear();
-            delay(100);
+            delay(200);
         }
     }
 }
 
-void checkIfAsteroidPassed(int asteroidXLocation){
+void checkIfAsteroidPassed(int asteroidXLocation)
+{
 
-    if(asteroidXLocation == 15 && gameOver == false && playersGamePoints > 0){
+    if (asteroidXLocation == 15 && gameOver == false && playersGamePoints > 0)
+    {
         digitalWrite(12, HIGH);
     }
-    if (asteroidXLocation == 12){
+    if (asteroidXLocation == 12)
+    {
         digitalWrite(12, LOW);
     }
 }

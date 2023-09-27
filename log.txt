@@ -54,4 +54,6 @@
 
     Changed to bigger breadboard. Added a green LED to breadboard.
     Added green led blink to both games. When player gets a point green led flashes.
+    Added potentiometer so player can dim the LED or completely shut it off if he wants.
+
     

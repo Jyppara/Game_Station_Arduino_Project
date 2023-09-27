@@ -1,6 +1,12 @@
 #include "game_station.h"
 #include "space_asteroid_game.h"
 #include "stack_tower_game.h"
+#define NOTE_GS3 208
+#define NOTE_A3 220
+#define NOTE_AS3 233
+#define NOTE_B3 247
+#define NOTE_DS4 311
+#define NOTE_GS4 415
 
 const String availableGames[] = {"Stack Tower", "Space Asteroid"};
 int rehreshIndex = 0;
@@ -8,6 +14,12 @@ int rehreshRate = 150;
 int gameIndex = 0;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 200;
+int gameOverMelody[] = {
+    NOTE_GS4, NOTE_DS4, NOTE_B3,
+    NOTE_AS3, NOTE_A3, NOTE_GS3};
+int gameOverTempo[] = {
+    10, 10, 10,
+    10, 10, 10};
 
 void printSpecialChar(int yAxis, int xAxis, const byte charToPrint[], int byteIndex)
 {
@@ -40,7 +52,6 @@ void printGameOverScreen(int playersGamePoints)
     }
     lcd.clear();
 }
-
 
 void introScreen()
 {
@@ -134,4 +145,17 @@ void greenLedOn(int delayTime)
     digitalWrite(GREEN_LED_PIN, HIGH);
     delay(delayTime);
     digitalWrite(GREEN_LED_PIN, LOW);
+}
+
+void gameOverMusic()
+{
+    // This function is used to play the game over melody when the game is over.
+    delay(300);
+    for (int i = 0; i < sizeof(gameOverMelody) / sizeof(gameOverMelody[0]); i++)
+    {
+        int noteDuration = 2000 / gameOverTempo[i];
+        tone(MELODY_PIN, gameOverMelody[i], noteDuration);
+        delay(noteDuration + 20);
+        noTone(MELODY_PIN);
+    }
 }
