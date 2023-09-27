@@ -42,5 +42,6 @@ void refreshAsteroidLocation();
 void checkForCollision();
 void spaceAsteroidGameplay();
 void resetAsteroidGameVariables();
+void checkIfAsteroidPassed(int asteroidXLocation);
 
 #endif
