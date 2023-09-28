@@ -8,6 +8,7 @@ and piezo. <br>
 ## Games programmed so far:
 1. TOWER STACK - game<br>
 2. SPACESHIP - game<br>
+3. REACTION -game<br>
 ## Circuit description:
 Circuit has one **push button** which is for navigating through games and playing them.
 Green **LED** is for blinking every time the player makes another point. With the **potentiometer**
