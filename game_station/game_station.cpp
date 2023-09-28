@@ -1,6 +1,7 @@
 #include "game_station.h"
 #include "space_asteroid_game.h"
 #include "stack_tower_game.h"
+#include "reaction_game.h"
 #define NOTE_GS3 208
 #define NOTE_A3 220
 #define NOTE_AS3 233
@@ -8,7 +9,10 @@
 #define NOTE_DS4 311
 #define NOTE_GS4 415
 
-const String availableGames[] = {"Stack Tower", "Space Asteroid"};
+// This file includes the implementation of the functions
+// that are used in multiple games.
+
+const String availableGames[] = {"Stack Tower", "Space Asteroid", "Reaction Speed"};
 int rehreshIndex = 0;
 int rehreshRate = 150;
 int gameIndex = 0;
@@ -98,14 +102,13 @@ void chooseGame()
             lcd.clear();
             rehreshIndex = 0;
             gameIndex++;
-            if (gameIndex > 1)
+            if (gameIndex > 2)
             {
                 gameIndex = 0;
             }
         }
         rehreshIndex++;
     }
-    lcd.clear();
     if (gameIndex == 0)
     {
         stackTowerGameplay();
@@ -113,6 +116,10 @@ void chooseGame()
     else if (gameIndex == 1)
     {
         spaceAsteroidGameplay();
+    }
+    else if (gameIndex == 2)
+    {
+        reactionGamePlay();
     }
     gameIndex = 0;
     rehreshIndex = 0;

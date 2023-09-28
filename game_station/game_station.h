@@ -19,7 +19,7 @@ void stackTowerGameplay();
 void introScreen();
 void readButtonPress();
 void chooseGame();
-void printGamePoints(int playersGamePoints,int yAxis);
+void printGamePoints(int playersGamePoints, int yAxis);
 void printGameOverScreen(int playersGamePoints);
 void greenLedOn(int delayTime);
 void gameOverMusic();

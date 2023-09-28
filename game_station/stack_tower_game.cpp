@@ -14,6 +14,11 @@ int difficulty_delay = 150;
 void stackTowerGameplay()
 {
     // This function is used to the stack tower gameplay.
+    while (digitalRead(2) == HIGH)
+    {
+        // This while loop is used to make sure that the player
+        // has released the button before the game starts.
+    }
 
     printSpecialChar(1, 7, lowerHalfTowerChar, 3);
     delay(200);
