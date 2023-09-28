@@ -3,6 +3,9 @@
 #include <LiquidCrystal.h>
 #include <Arduino.h>
 
+// This file includes the implementation of the functions
+// that are used in the space asteroid game only.
+
 LiquidCrystal lcd(11, 9, 6, 5, 4, 3); // RS, E, D4, D5, D6, D7
 int spaceshipYLocation = 0;
 int spaceshipXLocation = 0;
@@ -49,11 +52,11 @@ void refreshAsteroidLocation()
         {
             asteroidSpeed = random(3, 4);
         }
-        else if (playersGamePoints < 40)
+        else if (playersGamePoints < 20)
         {
             asteroidSpeed = random(2, 4);
         }
-        else if (playersGamePoints < 100)
+        else if (playersGamePoints < 30)
         {
             asteroidSpeed = random(2, 3);
         }
@@ -121,6 +124,11 @@ void checkIfAsteroidPassed(int asteroidXLocation)
 void spaceAsteroidGameplay()
 {
     // This function is used to run the game.
+    while (digitalRead(2) == HIGH)
+    {
+        // This while loop is used to make sure that the player
+        // has released the button before the game starts.
+    }
     while (!gameOver)
     {
         readButtonPress();

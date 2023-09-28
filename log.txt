@@ -55,5 +55,16 @@
     Changed to bigger breadboard. Added a green LED to breadboard.
     Added green led blink to both games. When player gets a point green led flashes.
     Added potentiometer so player can dim the LED or completely shut it off if he wants.
+    Started developing a new game; Reaction- game that counts the time
+    when the LED lights up and the player pushes the button.
+    Fixed an issue where choosing a game and holding the button for too long.
+    Now every game starts after the player has released the button.
+    Reaction time logic implemented to the new game.
 
+28/9/2023
+
+    Reaction game ready. The game lets the player try three times and keeps
+    track of the scores. At the end of the rounds the game displays the best
+    reaction time and the average reaction time.
+    Added more comments and descriptions to the different files.
     
