@@ -36,6 +36,26 @@ void stackTowerGameplay()
     resetTowerGameVariables();
 }
 
+void printTowerAnimation()
+{
+    // This function is used to print the tower animation where the tower
+    // is moving from top to bottom of the LCD screen.
+    delay(300);
+    lcd.clear();
+    printSpecialChar(0, 7, lowerHalfTowerChar, 3);
+    printSpecialChar(1, 7, fullTowerChar, 5);
+    printGamePoints(game_points, movingTowerYLocation);
+    delay(300);
+    lcd.clear();
+    printSpecialChar(1, 7, fullTowerChar, 5);
+    printGamePoints(game_points, movingTowerYLocation);
+    delay(300);
+    lcd.clear();
+    printSpecialChar(1, 7, lowerHalfTowerChar, 3);
+    printGamePoints(game_points, movingTowerYLocation);
+    delay(600);
+}
+
 void printStaticTower()
 {
     // This function is used to print the not moving tower on the LCD screen.
@@ -166,6 +186,10 @@ void checkIfGameOver()
         }
         movingTowerXLocation = random(0, 16);
         greenLedOn(400);
+        if (game_points % 3 == 0)
+        {
+            printTowerAnimation();
+        }
     }
     else
     {

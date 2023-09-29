@@ -2,6 +2,7 @@
 #include "space_asteroid_game.h"
 #include "stack_tower_game.h"
 #include "reaction_game.h"
+#include <avr/sleep.h>
 #define NOTE_GS3 208
 #define NOTE_A3 220
 #define NOTE_AS3 233
@@ -16,6 +17,7 @@ const String availableGames[] = {"Stack Tower", "Space Asteroid", "Reaction Spee
 int rehreshIndex = 0;
 int rehreshRate = 150;
 int gameIndex = 0;
+boolean isAsleep = false;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 200;
 int gameOverMelody[] = {
@@ -41,7 +43,7 @@ void printGameOverScreen(int playersGamePoints)
     lcd.setCursor(14, 0);
     lcd.print("Game over! Score:" + String(playersGamePoints));
     lcd.setCursor(14, 1);
-    lcd.print("Press to restart");
+    lcd.print("Press to go back");
     while (digitalRead(2) == LOW)
     {
         delay(150);
@@ -147,8 +149,8 @@ void printGamePoints(int playersGamePoints, int yAxis)
 
 void greenLedOn(int delayTime)
 {
-    // This function is used to make the green LED blink when the player
-    // has pressed the button.
+    // This function is used to make the green LED stay on
+    // for a given amount of time and then turn off.
     digitalWrite(GREEN_LED_PIN, HIGH);
     delay(delayTime);
     digitalWrite(GREEN_LED_PIN, LOW);

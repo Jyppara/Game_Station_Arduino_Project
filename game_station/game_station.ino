@@ -8,9 +8,20 @@
 //
 //  Games programmed so far:
 //
-//    - Space asteroid game
-//    - Stack tower game
-//    - Reaction game
+//    - TOWER STACK - game
+//        Got a steady hand like an architect? Now it's your time to build
+//        the tallest tower ever seen! With presicion and fast fingers 
+//        you'll be stacking blocks on top of each other by pushing the button.
+//        
+//    - SPACESHIP - game
+//        Avoid the asteroids to stay alive! Move your spaceship with the
+//        push button to avoid incoming asteroids. Beware as the asteroids 
+//        may move unprecidtably and fast as a bullet.
+//
+//    - REACTION -game
+//        You say you're fast? Let's see how fast you really are! Just push 
+//        the button as soon as you can see the LED light up. You must be 
+//        consistant because you get three tries and the average speed counts too!
 //
 //  Circuit description:
 //

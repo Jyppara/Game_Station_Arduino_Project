@@ -13,6 +13,7 @@
 
 extern LiquidCrystal lcd;
 extern const String availableGames[];
+extern boolean isAsleep;
 
 void printSpecialChar(int yAxis, int xAxis, const byte charToPrint[], int byteIndex);
 void stackTowerGameplay();
