@@ -8,6 +8,7 @@
 #define BUTTON_PIN 2
 #define GREEN_LED_PIN 12
 #define MELODY_PIN 13
+#define POTENTIOMETER_PIN A0
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 

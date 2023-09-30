@@ -46,6 +46,7 @@ void setup()
   pinMode(BUTTON_PIN, INPUT);
   pinMode(GREEN_LED_PIN, OUTPUT);
   pinMode(MELODY_PIN, OUTPUT);
+  pinMode(POTENTIOMETER_PIN, INPUT);
   introScreen();
   Serial.begin(9600);
 }

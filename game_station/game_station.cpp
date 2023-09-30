@@ -2,7 +2,7 @@
 #include "space_asteroid_game.h"
 #include "stack_tower_game.h"
 #include "reaction_game.h"
-#include <avr/sleep.h>
+#include "memory_game.h"
 #define NOTE_GS3 208
 #define NOTE_A3 220
 #define NOTE_AS3 233
@@ -13,11 +13,10 @@
 // This file includes the implementation of the functions
 // that are used in multiple games.
 
-const String availableGames[] = {"Stack Tower", "Space Asteroid", "Reaction Speed"};
+const String availableGames[] = {"Stack Tower", "Space Asteroid", "Reaction Speed", "Memory Game"};
 int rehreshIndex = 0;
 int rehreshRate = 150;
 int gameIndex = 0;
-boolean isAsleep = false;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 200;
 int gameOverMelody[] = {
@@ -104,7 +103,7 @@ void chooseGame()
             lcd.clear();
             rehreshIndex = 0;
             gameIndex++;
-            if (gameIndex > 2)
+            if (gameIndex > (sizeof(availableGames) / sizeof(availableGames[0])) - 1)
             {
                 gameIndex = 0;
             }
@@ -123,6 +122,11 @@ void chooseGame()
     {
         reactionGamePlay();
     }
+    else if (gameIndex == 3)
+    {
+        memoryGameplay();
+    }
+
     gameIndex = 0;
     rehreshIndex = 0;
 }

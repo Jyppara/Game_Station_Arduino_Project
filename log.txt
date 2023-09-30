@@ -67,4 +67,13 @@
     track of the scores. At the end of the rounds the game displays the best
     reaction time and the average reaction time.
     Added more comments and descriptions to the different files.
-    
+
+29/9/2023
+
+    Added an animation to the tower stack game. Also changed the tower blocks to have windows.
+
+30/9/2023
+
+    Start coding a new game: Memory- game. Added potentiometer and capacitor to be used in the game.
+    Mapped the potentiometer value to match the LCD. 
+    Now the potentiometer works as a gaming controller.
