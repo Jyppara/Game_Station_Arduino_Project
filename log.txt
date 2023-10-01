@@ -77,3 +77,12 @@
     Start coding a new game: Memory- game. Added potentiometer and capacitor to be used in the game.
     Mapped the potentiometer value to match the LCD. 
     Now the potentiometer works as a gaming controller.
+
+1/10/2023
+
+    Now the game prints the amount of cards to two rows and in the middle of the screen.
+    Printing the cards one by one makes the last printed card flicker too much.
+    Taking lcd.clear() out of the loop fixed the flickering.
+    The cards stay at the same location so no need to clear the lcd.
+    Added a starting animation where cards are set to the screen.
+
