@@ -13,7 +13,7 @@
 // This file includes the implementation of the functions
 // that are used in multiple games.
 
-const String availableGames[] = {"Stack Tower", "Space Asteroid", "Reaction Speed", "Memory Game"};
+const String availableGames[] = {"Memory Game", "Space Asteroid", "Reaction Speed", "Stack Tower"};
 int rehreshIndex = 0;
 int rehreshRate = 150;
 int gameIndex = 0;
@@ -112,7 +112,7 @@ void chooseGame()
     }
     if (gameIndex == 0)
     {
-        stackTowerGameplay();
+        memoryGameplay();
     }
     else if (gameIndex == 1)
     {
@@ -124,7 +124,7 @@ void chooseGame()
     }
     else if (gameIndex == 3)
     {
-        memoryGameplay();
+        stackTowerGameplay();
     }
 
     gameIndex = 0;

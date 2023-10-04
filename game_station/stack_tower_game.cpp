@@ -2,7 +2,7 @@
 #include "stack_tower_game.h"
 #include <LiquidCrystal.h>
 
-bool game_over = false;
+bool gameOver = false;
 int game_points = 0;
 int movingTowerXLocation = 6;
 int movingTowerYLocation = 1;
@@ -22,7 +22,7 @@ void stackTowerGameplay()
 
     printSpecialChar(1, 7, lowerHalfTowerChar, 3);
     delay(200);
-    while (!game_over)
+    while (!gameOver)
     {
         while (digitalRead(2) == LOW)
         {
@@ -193,7 +193,7 @@ void checkIfGameOver()
     }
     else
     {
-        game_over = true;
+        gameOver = true;
         gameOverFlashing();
     }
 }
@@ -202,7 +202,7 @@ void resetTowerGameVariables()
 {
     // This function is used to reset the variables that are used in
     // the stack tower game when the game is over.
-    game_over = false;
+    gameOver = false;
     game_points = 0;
     index = 1;
     movingTowerXLocation = 6;
