@@ -8,11 +8,13 @@
 #define BUTTON_PIN 2
 #define GREEN_LED_PIN 12
 #define MELODY_PIN 13
+#define POTENTIOMETER_PIN A0
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
 extern LiquidCrystal lcd;
 extern const String availableGames[];
+extern boolean isAsleep;
 
 void printSpecialChar(int yAxis, int xAxis, const byte charToPrint[], int byteIndex);
 void stackTowerGameplay();

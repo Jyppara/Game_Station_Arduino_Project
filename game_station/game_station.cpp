@@ -2,6 +2,7 @@
 #include "space_asteroid_game.h"
 #include "stack_tower_game.h"
 #include "reaction_game.h"
+#include "memory_game.h"
 #define NOTE_GS3 208
 #define NOTE_A3 220
 #define NOTE_AS3 233
@@ -12,7 +13,7 @@
 // This file includes the implementation of the functions
 // that are used in multiple games.
 
-const String availableGames[] = {"Stack Tower", "Space Asteroid", "Reaction Speed"};
+const String availableGames[] = {"Memory Game", "Space Asteroid", "Reaction Speed", "Stack Tower"};
 int rehreshIndex = 0;
 int rehreshRate = 150;
 int gameIndex = 0;
@@ -41,7 +42,7 @@ void printGameOverScreen(int playersGamePoints)
     lcd.setCursor(14, 0);
     lcd.print("Game over! Score:" + String(playersGamePoints));
     lcd.setCursor(14, 1);
-    lcd.print("Press to restart");
+    lcd.print("Press to go back");
     while (digitalRead(2) == LOW)
     {
         delay(150);
@@ -102,7 +103,7 @@ void chooseGame()
             lcd.clear();
             rehreshIndex = 0;
             gameIndex++;
-            if (gameIndex > 2)
+            if (gameIndex > (sizeof(availableGames) / sizeof(availableGames[0])) - 1)
             {
                 gameIndex = 0;
             }
@@ -111,7 +112,7 @@ void chooseGame()
     }
     if (gameIndex == 0)
     {
-        stackTowerGameplay();
+        memoryGameplay();
     }
     else if (gameIndex == 1)
     {
@@ -121,6 +122,11 @@ void chooseGame()
     {
         reactionGamePlay();
     }
+    else if (gameIndex == 3)
+    {
+        stackTowerGameplay();
+    }
+
     gameIndex = 0;
     rehreshIndex = 0;
 }
@@ -147,8 +153,8 @@ void printGamePoints(int playersGamePoints, int yAxis)
 
 void greenLedOn(int delayTime)
 {
-    // This function is used to make the green LED blink when the player
-    // has pressed the button.
+    // This function is used to make the green LED stay on
+    // for a given amount of time and then turn off.
     digitalWrite(GREEN_LED_PIN, HIGH);
     delay(delayTime);
     digitalWrite(GREEN_LED_PIN, LOW);

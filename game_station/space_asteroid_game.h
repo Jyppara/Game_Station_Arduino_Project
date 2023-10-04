@@ -16,7 +16,7 @@ extern int asteroidXLocation;
 extern int dividerIndex;
 extern int asteroidSpeed;
 extern int playersGamePoints;
-extern bool gameOver;
+extern bool asteroidGameOver;
 
 const byte spaceShipChar[] = {
     B11000,
