@@ -67,9 +67,6 @@
     track of the scores. At the end of the rounds the game displays the best
     reaction time and the average reaction time.
     Added more comments and descriptions to the different files.
-<<<<<<< Updated upstream
-    
-=======
 
 29/9/2023
 
@@ -105,4 +102,3 @@
     End screen added with players finishing time in seconds.
     Welded a DC jack wire with a 9V battery adaptor for Arduino to have an external power source.
     Memory game ready and merged to repository Main branch.
->>>>>>> Stashed changes
