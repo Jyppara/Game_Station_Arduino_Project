@@ -15,7 +15,7 @@ int dividerIndex = 0;
 int ledIndex = 0;
 int asteroidSpeed = 4;
 int playersGamePoints = 0;
-bool gameOver = false;
+bool asteroidGameOver = false;
 
 void resetAsteroidGameVariables()
 {
@@ -27,7 +27,7 @@ void resetAsteroidGameVariables()
     dividerIndex = 0;
     asteroidSpeed = 4;
     playersGamePoints = 0;
-    gameOver = false;
+    asteroidGameOver = false;
 }
 
 void refreshAsteroidLocation()
@@ -81,7 +81,7 @@ void checkForCollision()
     // the function is used to create a blinking effect on the screen
     if (spaceshipYLocation == asteroidYLocation && spaceshipXLocation == asteroidXLocation)
     {
-        gameOver = true;
+        asteroidGameOver = true;
         gameOverMusic();
         for (int i = 0; i < 5; i++)
         {
@@ -111,7 +111,7 @@ void checkForCollision()
 void checkIfAsteroidPassed(int asteroidXLocation)
 {
 
-    if (asteroidXLocation == 15 && gameOver == false && playersGamePoints > 0)
+    if (asteroidXLocation == 15 && asteroidGameOver == false && playersGamePoints > 0)
     {
         digitalWrite(12, HIGH);
     }
@@ -129,7 +129,7 @@ void spaceAsteroidGameplay()
         // This while loop is used to make sure that the player
         // has released the button before the game starts.
     }
-    while (!gameOver)
+    while (!asteroidGameOver)
     {
         readButtonPress();
         refreshAsteroidLocation();

@@ -67,4 +67,36 @@
     track of the scores. At the end of the rounds the game displays the best
     reaction time and the average reaction time.
     Added more comments and descriptions to the different files.
-    
+
+29/9/2023
+
+    Added an animation to the tower stack game. Also changed the tower blocks to have windows.
+
+30/9/2023
+
+    Start coding a new game: Memory- game. Added potentiometer and capacitor to be used in the game.
+    Mapped the potentiometer value to match the LCD. 
+    Now the potentiometer works as a gaming controller.
+
+1/10/2023
+
+    Now the game prints the amount of cards to two rows and in the middle of the screen.
+    Printing the cards one by one makes the last printed card flicker too much.
+    Taking lcd.clear() out of the loop fixed the flickering.
+    The cards stay at the same location so no need to clear the lcd.
+    Added a starting animation where cards are set to the screen.
+
+2/10/2023
+
+    Cards now disappear when the matching card is found.
+    Card can now be flipped to reveal what it is and keep searching the pair.
+
+4/10/2023
+
+    When the second card is picked both cards are displayed for a moment.
+    If they are a pair they are removed otherwise they are hidden again.
+    Now the pair is invalid if choosing the same card twice.
+    Also the game doesn't move forward if you try selecting the same card.
+    Game tested to work with any even sized deck of cards.
+    Green led lights up when player finds a pair or when the game is won.
+    End screen added with players finishing time in seconds.

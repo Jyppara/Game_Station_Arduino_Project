@@ -9,14 +9,14 @@ const byte lowerHalfTowerChar[] = {
     B00000,
     B00000,
     B11111,
-    B11111,
-    B11111,
+    B10101,
+    B10101,
     B11111};
 
 const byte upperHalfTowerChar[] = {
     B11111,
-    B11111,
-    B11111,
+    B10101,
+    B10101,
     B11111,
     B00000,
     B00000,
@@ -25,12 +25,12 @@ const byte upperHalfTowerChar[] = {
 
 const byte fullTowerChar[] = {
     B11111,
+    B10101,
+    B10101,
     B11111,
     B11111,
-    B11111,
-    B11111,
-    B11111,
-    B11111,
+    B10101,
+    B10101,
     B11111};
 
 void stackTowerGameplay();
@@ -39,5 +39,6 @@ void gameOverFlashing();
 void checkIfGameOver();
 void printMovingTowerBlock();
 void printStaticTower();
+void printTowerAnimation();
 
 #endif
