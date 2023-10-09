@@ -5,9 +5,10 @@
 
 #ifndef GAME_STATION_H
 #define GAME_STATION_H
-#define BUTTON_PIN 2
+#define BUTTON_PIN 10
 #define GREEN_LED_PIN 12
 #define MELODY_PIN 13
+#define INTERRUPT_PIN 2
 #define POTENTIOMETER_PIN A0
 #include <Arduino.h>
 #include <LiquidCrystal.h>
@@ -25,5 +26,6 @@ void printGamePoints(int playersGamePoints, int yAxis);
 void printGameOverScreen(int playersGamePoints);
 void greenLedOn(int delayTime);
 void gameOverMusic();
+int mapPotentiometerValue(int index);
 
 #endif

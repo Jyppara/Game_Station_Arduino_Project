@@ -113,22 +113,73 @@ void checkIfAsteroidPassed(int asteroidXLocation)
 
     if (asteroidXLocation == 15 && asteroidGameOver == false && playersGamePoints > 0)
     {
-        digitalWrite(12, HIGH);
+        digitalWrite(GREEN_LED_PIN, HIGH);
     }
     if (asteroidXLocation == 12)
     {
-        digitalWrite(12, LOW);
+        digitalWrite(GREEN_LED_PIN, LOW);
     }
+}
+
+void asteroidIntroScreen()
+{
+    // This function is used to print the intro screen for the space asteroid game.
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Avoid the");
+    lcd.setCursor(0, 1);
+    lcd.print("space asteroids!");
+    while (digitalRead(BUTTON_PIN) == LOW)
+        ;
+    while (digitalRead(BUTTON_PIN) == HIGH)
+        ;
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Press button to");
+    lcd.setCursor(0, 1);
+    lcd.print("move spaceship!");
+    while (digitalRead(BUTTON_PIN) == LOW)
+        ;
+    while (digitalRead(BUTTON_PIN) == HIGH)
+        ;
+}
+
+void asteroidInterruptHandler()
+{
+    // This function is used to handle the interrupt that is used
+    // to pause the gameplay.
+    while (digitalRead(INTERRUPT_PIN) == HIGH)
+        ;
+    noInterrupts();
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Game paused!");
+    lcd.setCursor(0, 1);
+    lcd.print("Press to go back");
+    while (digitalRead(BUTTON_PIN) == LOW)
+    {
+        // Wait for the player to push the button.
+    }
+    while (digitalRead(BUTTON_PIN) == HIGH)
+    {
+        // Wait for the player to release the button.
+    }
+    lcd.clear();
+    interrupts();
 }
 
 void spaceAsteroidGameplay()
 {
     // This function is used to run the game.
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // This while loop is used to make sure that the player
         // has released the button before the game starts.
     }
+    detachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN));
+    attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), asteroidInterruptHandler, RISING);
+    lcd.clear();
+    asteroidIntroScreen();
     while (!asteroidGameOver)
     {
         readButtonPress();
@@ -141,5 +192,7 @@ void spaceAsteroidGameplay()
         checkIfAsteroidPassed(asteroidXLocation);
         delay(50); // This delay is used to manipulate the speed of the game.
     }
+    detachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN));
     printGameOverScreen(playersGamePoints);
+    
 }

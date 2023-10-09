@@ -3,8 +3,6 @@
 
 #ifndef SPACE_ASTEROID_GAME_H
 #define SPACE_ASTEROID_GAME_H
-#define BUTTON_PIN 2
-
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
@@ -39,9 +37,11 @@ const byte asteroidChar[] = {
     B00000};
     
 void refreshAsteroidLocation();
+void asteroidIntroScreen();
 void checkForCollision();
 void spaceAsteroidGameplay();
 void resetAsteroidGameVariables();
 void checkIfAsteroidPassed(int asteroidXLocation);
+void asteroidInterruptHandler();
 
 #endif

@@ -3,6 +3,7 @@
 #include "stack_tower_game.h"
 #include "reaction_game.h"
 #include "memory_game.h"
+#include <avr/sleep.h>
 #define NOTE_GS3 208
 #define NOTE_A3 220
 #define NOTE_AS3 233
@@ -13,10 +14,15 @@
 // This file includes the implementation of the functions
 // that are used in multiple games.
 
-const String availableGames[] = {"Memory Game", "Space Asteroid", "Reaction Speed", "Stack Tower"};
+const String availableGames[] = {
+    "1.Memory Game",
+    "2.Stack Tower",
+    "3.Space Asteroid",
+    "4.Reaction Speed",
+};
+const int numberOfGames = sizeof(availableGames) / sizeof(availableGames[0]);
 int rehreshIndex = 0;
 int rehreshRate = 150;
-int gameIndex = 0;
 unsigned long lastDebounceTime = 0;
 unsigned long debounceDelay = 200;
 int gameOverMelody[] = {
@@ -43,14 +49,14 @@ void printGameOverScreen(int playersGamePoints)
     lcd.print("Game over! Score:" + String(playersGamePoints));
     lcd.setCursor(14, 1);
     lcd.print("Press to go back");
-    while (digitalRead(2) == LOW)
+    while (digitalRead(BUTTON_PIN) == LOW)
     {
         delay(150);
         lcd.scrollDisplayLeft();
     }
     resetAsteroidGameVariables();
     // This while loop is used to make sure that the player has released the button
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         delay(150);
         lcd.scrollDisplayLeft();
@@ -62,13 +68,24 @@ void introScreen()
 {
     // This function is used to print the intro screen on the LCD screen
     // and wait for the player to press the button to start the game.
-    while (digitalRead(2) == LOW)
-    {
-        lcd.setCursor(0, 0);
-        lcd.print("--GameStation--");
-        lcd.setCursor(0, 1);
-        lcd.print("Press to start");
-    }
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("--GameStation--");
+    lcd.setCursor(0, 1);
+    lcd.print("Press to start");
+    while (digitalRead(BUTTON_PIN) == LOW)
+        ;
+    while (digitalRead(BUTTON_PIN) == HIGH)
+        ;
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Use the knob");
+    lcd.setCursor(0, 1);
+    lcd.print("to browse games");
+    while (digitalRead(BUTTON_PIN) == LOW)
+        ;
+    while (digitalRead(BUTTON_PIN) == HIGH)
+        ;
     lcd.clear();
 }
 
@@ -87,48 +104,49 @@ void chooseGame()
 {
     // This function is used to print the available games on the LCD screen
     // and wait for the player to choose a game and then starts the game.
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
-        delay(50);
+        // This while loop is used to make sure that the player
+        // has released the button before the game starts.
     }
-    lcd.clear();
-    while (digitalRead(2) == LOW)
+    int potentiometerIndex = mapPotentiometerValue(numberOfGames);
+    while (digitalRead(BUTTON_PIN) == LOW)
     {
+        potentiometerIndex = mapPotentiometerValue(numberOfGames);
+        lcd.clear();
         lcd.setCursor(0, 0);
         lcd.print("Choose a game:");
         lcd.setCursor(0, 1);
-        lcd.print(String(gameIndex + 1) + "." + availableGames[gameIndex]);
-        if (rehreshIndex > rehreshRate)
+        lcd.print(availableGames[potentiometerIndex]);
+        int compareIndex = mapPotentiometerValue(numberOfGames);
+        while (compareIndex == potentiometerIndex && digitalRead(BUTTON_PIN) == LOW)
         {
-            lcd.clear();
-            rehreshIndex = 0;
-            gameIndex++;
-            if (gameIndex > (sizeof(availableGames) / sizeof(availableGames[0])) - 1)
-            {
-                gameIndex = 0;
-            }
+            // This while loop is used to make sure that the screen
+            // is refreshed only when the potentiometer value has changed.
+            compareIndex = mapPotentiometerValue(numberOfGames);
         }
-        rehreshIndex++;
+        delay(50);
     }
-    if (gameIndex == 0)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
+        // This while loop is used to make sure that the player
+        // has released the button before the game starts.
+    }
+    switch (potentiometerIndex)
+    {
+    case 0:
         memoryGameplay();
-    }
-    else if (gameIndex == 1)
-    {
-        spaceAsteroidGameplay();
-    }
-    else if (gameIndex == 2)
-    {
-        reactionGamePlay();
-    }
-    else if (gameIndex == 3)
-    {
+        break;
+    case 1:
         stackTowerGameplay();
+        break;
+    case 2:
+        spaceAsteroidGameplay();
+        break;
+    case 3:
+        reactionGamePlay();
+        break;
     }
-
-    gameIndex = 0;
-    rehreshIndex = 0;
 }
 
 void printGamePoints(int playersGamePoints, int yAxis)
@@ -171,4 +189,13 @@ void gameOverMusic()
         delay(noteDuration + 20);
         noTone(MELODY_PIN);
     }
+}
+
+int mapPotentiometerValue(int index)
+{
+    // This function is used to read the potentiometer value
+    // and map it to the number of cards.
+    int potentiometerValue = analogRead(A0);
+    int potentioMeterIndex = map(potentiometerValue, 0, 1022, 0, index - 1);
+    return potentioMeterIndex;
 }

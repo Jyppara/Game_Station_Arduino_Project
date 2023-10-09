@@ -34,11 +34,13 @@ const byte fullTowerChar[] = {
     B11111};
 
 void stackTowerGameplay();
+void towerIntroScreen();
 void resetTowerGameVariables();
 void gameOverFlashing();
 void checkIfGameOver();
 void printMovingTowerBlock();
 void printStaticTower();
 void printTowerAnimation();
+void towerInterruptHandler();
 
 #endif

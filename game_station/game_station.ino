@@ -4,23 +4,27 @@
 // allows the user play different games on a single device. Goals for this
 // project is to learn more about programming microcontrollers and getting
 // more familiar of using basic electronic components such as LCD, LEDs,
-// resistors, potentiometer and piezo.
+// resistors, capacitor, potentiometer and piezo.
 //
 //  Games programmed so far:
 //
+//    - MEMORY -game
+//        The classic memory card game now in your Arduino! Use the potentiometer
+//        to choose a card and try to find the matching pair! See how fast you can solve it!
+//
 //    - TOWER STACK - game
 //        Got a steady hand like an architect? Now it's your time to build
-//        the tallest tower ever seen! With presicion and fast fingers 
+//        the tallest tower ever seen! With presicion and fast fingers
 //        you'll be stacking blocks on top of each other by pushing the button.
-//        
+//
 //    - SPACESHIP - game
 //        Avoid the asteroids to stay alive! Move your spaceship with the
-//        push button to avoid incoming asteroids. Beware as the asteroids 
+//        push button to avoid incoming asteroids. Beware as the asteroids
 //        may move unprecidtably and fast as a bullet.
 //
 //    - REACTION -game
-//        You say you're fast? Let's see how fast you really are! Just push 
-//        the button as soon as you can see the LED light up. You must be 
+//        You say you're fast? Let's see how fast you really are! Just push
+//        the button as soon as you can see the LED light up. You must be
 //        consistant because you get three tries and the average speed counts too!
 //
 //  Circuit description:
@@ -47,6 +51,7 @@ void setup()
   pinMode(GREEN_LED_PIN, OUTPUT);
   pinMode(MELODY_PIN, OUTPUT);
   pinMode(POTENTIOMETER_PIN, INPUT);
+  pinMode(INTERRUPT_PIN, INPUT);
   introScreen();
   Serial.begin(9600);
 }

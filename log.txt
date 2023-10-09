@@ -102,3 +102,15 @@
     End screen added with players finishing time in seconds.
     Welded a DC jack wire with a 9V battery adaptor for Arduino to have an external power source.
     Memory game ready and merged to repository Main branch.
+    Added a second button to program an interrupt to it.
+
+5/10/2023
+
+    Fixed a bug where player can select a card that is already removed from the screen.
+    
+9/10/2023
+
+    Adding more instruction before the game start so players know better what to do before starting.
+    Now the player can use the potentiometer to choose the game to be played.
+    Changed the mapping value on the map() function to work better with edge resistance values.
+    Programmed the interrupt button to be a pause button that pauses the game.
