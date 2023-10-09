@@ -100,6 +100,8 @@
     Game tested to work with any even sized deck of cards.
     Green led lights up when player finds a pair or when the game is won.
     End screen added with players finishing time in seconds.
+    Welded a DC jack wire with a 9V battery adaptor for Arduino to have an external power source.
+    Memory game ready and merged to repository Main branch.
     Added a second button to program an interrupt to it.
 
 5/10/2023
