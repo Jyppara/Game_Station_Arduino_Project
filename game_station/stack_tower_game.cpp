@@ -1,6 +1,5 @@
 #include "game_station.h"
 #include "stack_tower_game.h"
-#include <LiquidCrystal.h>
 
 bool gameOver = false;
 int game_points = 0;
@@ -14,17 +13,19 @@ int difficulty_delay = 150;
 void stackTowerGameplay()
 {
     // This function is used to the stack tower gameplay.
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // This while loop is used to make sure that the player
         // has released the button before the game starts.
     }
-
+    detachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN));
+    attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), towerInterruptHandler, RISING);
+    towerIntroScreen();
     printSpecialChar(1, 7, lowerHalfTowerChar, 3);
     delay(200);
     while (!gameOver)
     {
-        while (digitalRead(2) == LOW)
+        while (digitalRead(BUTTON_PIN) == LOW)
         {
             lcd.clear();
             printStaticTower();
@@ -32,8 +33,56 @@ void stackTowerGameplay()
         }
         checkIfGameOver();
     }
+    detachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN));
     printGameOverScreen(game_points);
     resetTowerGameVariables();
+}
+
+void towerInterruptHandler(){
+    // This function is used to handle the interrupt that is used
+    // to pause the gameplay.
+    while (digitalRead(INTERRUPT_PIN) == HIGH)
+        ;
+    noInterrupts();
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Game paused!");
+    lcd.setCursor(0, 1);
+    lcd.print("Press to go back");
+    while (digitalRead(BUTTON_PIN) == LOW)
+    {
+        // Wait for the player to push the button.
+    }
+    while (digitalRead(BUTTON_PIN) == HIGH)
+    {
+        // Wait for the player to release the button.
+    }
+    lcd.clear();
+    interrupts();
+}
+
+void towerIntroScreen()
+{
+    // This function is used to print the intro screen for the stack tower game.
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Stack the tower");
+    lcd.setCursor(0, 1);
+    lcd.print("and make it tall");
+    while (digitalRead(BUTTON_PIN) == LOW)
+        ;
+    while (digitalRead(BUTTON_PIN) == HIGH)
+        ;
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Press button to");
+    lcd.setCursor(0, 1);
+    lcd.print("stack the blocks!");
+    while (digitalRead(BUTTON_PIN) == LOW)
+        ;
+    while (digitalRead(BUTTON_PIN) == HIGH)
+        ;
+    lcd.clear();
 }
 
 void printTowerAnimation()

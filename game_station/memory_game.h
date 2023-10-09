@@ -26,8 +26,9 @@ const byte selectedCardChar[] = {
 	B01110,
 	B00000};
 
+void memoryGameInterruptHandler();
 void memoryGameplay();
-int mapPotentiometerValue(int numberOfCards);
+void memoryGameIntroScreen();
 void printAllCards(int numberOfCards, int potentioMeterIndex);
 void startAnimation(int numberOfCards, int potentioMeterIndex);
 void revealCards(int numberOfCards, int flippedCard, int potentioMeterIndex);

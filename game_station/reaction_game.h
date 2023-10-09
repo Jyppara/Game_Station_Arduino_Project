@@ -11,6 +11,6 @@ void randomDelay(int lowerBound, int upperBound);
 unsigned long oneCycle(String waitingMessage);
 void calculateScores(unsigned long firstTry, unsigned long secondTry, unsigned long thirdTry, unsigned long &averageReactionTime, unsigned long &bestReactionTime);
 void printScores(unsigned long averageReactionTime, unsigned long bestReactionTime);
-
+void reactionInterruptHandler();
 
 #endif

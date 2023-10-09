@@ -11,11 +11,13 @@ void reactionGamePlay()
     // The player's reaction time is then displayed on the screen.
     // In the end the player's average reaction time and best reaction time
     // are displayed on the screen.
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // This while loop is used to make sure that the player
         // has released the button before the game starts.
     }
+    detachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN));
+    attachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN), reactionInterruptHandler, RISING);
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Hit the button");
@@ -29,20 +31,44 @@ void reactionGamePlay()
     firstTry = oneCycle("Be fast!");        // First round
     secondTry = oneCycle("Be faster!");     // Second round
     thirdTry = oneCycle("Be the fastest!"); // Third round
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // Wait for the player to release the button.
     }
-    while (digitalRead(2) == LOW)
+    while (digitalRead(BUTTON_PIN) == LOW)
     {
         // Wait for the player to push the button.
     }
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // Wait for the player to release the button.
     }
+    detachInterrupt(digitalPinToInterrupt(INTERRUPT_PIN));
     calculateScores(firstTry, secondTry, thirdTry, averageReactionTime, bestReactionTime);
     printScores(averageReactionTime, bestReactionTime);
+}
+
+void reactionInterruptHandler(){
+    // This function is used to handle the interrupt that is used
+    // to pause the gameplay.
+    while (digitalRead(INTERRUPT_PIN) == HIGH)
+        ;
+    noInterrupts();
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Game paused!");
+    lcd.setCursor(0, 1);
+    lcd.print("Press to go back");
+    while (digitalRead(BUTTON_PIN) == LOW)
+    {
+        // Wait for the player to push the button.
+    }
+    while (digitalRead(BUTTON_PIN) == HIGH)
+    {
+        // Wait for the player to release the button.
+    }
+    lcd.clear();
+    interrupts();
 }
 
 void calculateScores(unsigned long firstTry, unsigned long secondTry, unsigned long thirdTry, unsigned long &averageReactionTime, unsigned long &bestReactionTime)
@@ -83,11 +109,11 @@ void printScores(unsigned long averageReactionTime, unsigned long bestReactionTi
     {
         lcd.print("was " + String(averageReactionTime).substring(0, 2) + "," + String(averageReactionTime).substring(2) + "s");
     }
-    while (digitalRead(2) == LOW)
+    while (digitalRead(BUTTON_PIN) == LOW)
     {
         // Wait for the player to press the button.
     }
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // Wait for the player to release the button.
     }
@@ -108,11 +134,11 @@ void printScores(unsigned long averageReactionTime, unsigned long bestReactionTi
     {
         lcd.print("was " + String(bestReactionTime).substring(0, 2) + "," + String(bestReactionTime).substring(2) + "s");
     }
-    while (digitalRead(2) == LOW)
+    while (digitalRead(BUTTON_PIN) == LOW)
     {
         // Wait for the player to press the button.
     }
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // Wait for the player to release the button.
     }
@@ -128,11 +154,11 @@ void randomDelay(int lowerBound, int upperBound)
 unsigned long oneCycle(String waitingMessage)
 {
     // This function is used to run one cycle of the reaction game.
-    while (digitalRead(2) == LOW)
+    while (digitalRead(BUTTON_PIN) == LOW)
     {
         // Wait for the player to press the button.
     }
-    while (digitalRead(2) == HIGH)
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // Wait for the player to release the button.
     }
@@ -142,17 +168,19 @@ unsigned long oneCycle(String waitingMessage)
     int spaces = (16 - sizeOfMessage) / 2;
     lcd.setCursor(spaces, 0);
     lcd.print(waitingMessage);
-    randomDelay(1000, 7000);
-    digitalWrite(12, HIGH);
+    lcd.setCursor(13, 1);
+    lcd.print("-->");
+    randomDelay(2000, 7000);
+    digitalWrite(GREEN_LED_PIN, HIGH);
     unsigned long startTime = millis();
-    while (digitalRead(2) == LOW)
+    while (digitalRead(BUTTON_PIN) == LOW)
     {
         // Wait for the player to press the button.
     }
     unsigned long endTime = millis();
     unsigned long reactionTime = endTime - startTime;
-    digitalWrite(12, LOW);
-    while (digitalRead(2) == HIGH)
+    digitalWrite(GREEN_LED_PIN, LOW);
+    while (digitalRead(BUTTON_PIN) == HIGH)
     {
         // Wait for the player to release the button.
     }
