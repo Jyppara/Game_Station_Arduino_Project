@@ -114,3 +114,11 @@
     Now the player can use the potentiometer to choose the game to be played.
     Changed the mapping value on the map() function to work better with edge resistance values.
     Programmed the interrupt button to be a pause button that pauses the game.
+
+21/10/2023
+
+    Started coding a new game: Guess The Temperature- game where player guesses the Temperature.
+    Added a temperature sensor to the breadboard.
+    Some problems appeared where potentiometer doesn't include the last values.
+    Lowered the mapping value down to make the potentiometer work properly.
+    The game is now functional and tested to work.

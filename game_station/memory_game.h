@@ -26,6 +26,16 @@ const byte selectedCardChar[] = {
 	B01110,
 	B00000};
 
+const byte cursorChar[] = {
+	B00000,
+	B00000,
+	B00000,
+	B00100,
+	B00000,
+	B00000,
+	B00000,
+	B00000};
+
 void memoryGameInterruptHandler();
 void memoryGameplay();
 void memoryGameIntroScreen();

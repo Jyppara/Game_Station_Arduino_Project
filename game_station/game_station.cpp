@@ -3,6 +3,7 @@
 #include "stack_tower_game.h"
 #include "reaction_game.h"
 #include "memory_game.h"
+#include "temperature_game.h"
 #include <avr/sleep.h>
 #define NOTE_GS3 208
 #define NOTE_A3 220
@@ -19,7 +20,7 @@ const String availableGames[] = {
     "2.Stack Tower",
     "3.Space Asteroid",
     "4.Reaction Speed",
-};
+    "5.GuessTemp Game"};
 const int numberOfGames = sizeof(availableGames) / sizeof(availableGames[0]);
 int rehreshIndex = 0;
 int rehreshRate = 150;
@@ -146,6 +147,9 @@ void chooseGame()
     case 3:
         reactionGamePlay();
         break;
+    case 4:
+        temperatureGameplay();
+        break;
     }
 }
 
@@ -196,6 +200,6 @@ int mapPotentiometerValue(int index)
     // This function is used to read the potentiometer value
     // and map it to the number of cards.
     int potentiometerValue = analogRead(A0);
-    int potentioMeterIndex = map(potentiometerValue, 0, 1022, 0, index - 1);
+    int potentioMeterIndex = map(potentiometerValue, 0, 1000, 0, index - 1);
     return potentioMeterIndex;
 }
