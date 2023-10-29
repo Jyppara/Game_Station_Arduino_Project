@@ -303,7 +303,7 @@ void printAllCards(int numberOfCards, int potentioMeterIndex)
                 if (cards[i] == "Removed")
                 {
                     lcd.setCursor(indent + i, 0);
-                    lcd.print(" ");
+                    printSpecialChar(0, indent + i, cursorChar, 8);
                 }
                 else
                 {
@@ -330,7 +330,7 @@ void printAllCards(int numberOfCards, int potentioMeterIndex)
                 if (cards[i] == "Removed")
                 {
                     lcd.setCursor(indent + i - (numberOfCards / 2), 1);
-                    lcd.print(" ");
+                    printSpecialChar(1, indent + i - (numberOfCards / 2), cursorChar, 8);
                 }
                 else
                 {

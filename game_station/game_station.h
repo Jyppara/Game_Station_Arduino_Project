@@ -10,6 +10,7 @@
 #define MELODY_PIN 13
 #define INTERRUPT_PIN 2
 #define POTENTIOMETER_PIN A0
+#define TEMPERATURE_PIN A1
 #include <Arduino.h>
 #include <LiquidCrystal.h>
 
