@@ -20,6 +20,9 @@ incoming asteroids. Beware as the asteroids may move unprecidtably and fast as a
 You say you're fast? Let's see how fast you really are! Just push the button as soon
 as you can see the LED light up. You must be consistant because you get three tries
 and the average speed counts too!
+5. TEMPERATURE -game<br>
+Can you feel the atmosphere? Can you guess the right temperature? Use the potentiometer to
+make a guess on how warm the temperature is in your room.
 ## Circuit description:
 Circuit has one **push button** which is for navigating through games and playing them.
 Green **LED** is for blinking every time the player makes another point or proceeds in the game. With the **potentiometer**
@@ -27,10 +30,11 @@ the player can dim the **LED** or turn it off completely if he/she wants to do s
 **Piezo** is for making a "Game Over" sound whenever the player looses the game.
 The second **potentiometer** is for the MEMORY -game where you can use it to choose
 a card of your choice from the screen. **Decoupling capacitor** is for decoupling
-changes caused by the components from the rest of the circuit(especially if the circuit has a motor later on).
+changes caused by the components from the rest of the circuit(especially if the circuit has a motor later on). 
+TEMPERATURE -game uses a **temperature sensor** to measure the temperature in the room.
 The circuit is powered with a 9V battery through the DC jack.
 You can view the circuit design from the AUTODESK Tinkercad from the following link:
 https://www.tinkercad.com/things/2UjaoKeHYQ5
   
-![GameStation wiring](https://github.com/Jyppara/Game_Station_Arduino_Project/blob/main/Simulation%20pictures/GameStation-%20Emulator1.1.png)
-![GameStation schematic](https://github.com/Jyppara/Game_Station_Arduino_Project/blob/main/Simulation%20pictures/GameStation-%20Emulator_schematic1.1.PNG)
+![GameStation wiring](https://github.com/Jyppara/Game_Station_Arduino_Project/blob/main/Simulation%20pictures/GameStation-%20Emulator.png)
+![GameStation schematic](https://github.com/Jyppara/Game_Station_Arduino_Project/blob/main/Simulation%20pictures/GameStation-%20Emulator_schematic.PNG)
