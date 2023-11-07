@@ -23,7 +23,7 @@ and the average speed counts too!
 5. TEMPERATURE -game<br>
 Can you feel the atmosphere? Can you guess the right temperature? Use the potentiometer to
 make a guess on how warm the temperature is in your room.
-## Circuit description:
+## :electric_plug:Circuit description:electric_plug::
 Circuit has one **push button** which is for navigating through games and playing them.
 Green **LED** is for blinking every time the player makes another point or proceeds in the game. With the **potentiometer**
 the player can dim the **LED** or turn it off completely if he/she wants to do so.
