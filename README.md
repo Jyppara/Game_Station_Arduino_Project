@@ -1,11 +1,11 @@
-# Game Station Arduino Project
+# :video_game:Game Station Arduino Project:video_game:
 
 GameStation project for Arduino Uno R3 with a 2x16 LCD screen and some basic electronic components.
 GameStation is a gaming device that allows the user play different games on a single device.
 Goals for this project is to learn more about programming microcontrollers and getting
 more familiar of using basic electronic components such as LCD, LEDs, capacitor, resistors, potentiometer
 and piezo. <br>
-## Games programmed so far:
+## :game_die:Games programmed so far:game_die::
 1. MEMORY -game<br>
 The classic memory card game now in your Arduino! Use the potentiometer to choose a card
 and try to find the matching pair! See how fast you can solve it!
@@ -35,6 +35,6 @@ TEMPERATURE -game uses a **temperature sensor** to measure the temperature in th
 The circuit is powered with a 9V battery through the DC jack.
 You can view the circuit design from the AUTODESK Tinkercad from the following link:
 https://www.tinkercad.com/things/2UjaoKeHYQ5
-  
+![GameStation](https://github.com/Jyppara/Game_Station_Arduino_Project/blob/main/Simulation%20pictures/GameStation.jpg)
 ![GameStation wiring](https://github.com/Jyppara/Game_Station_Arduino_Project/blob/main/Simulation%20pictures/GameStation-%20Emulator.png)
 ![GameStation schematic](https://github.com/Jyppara/Game_Station_Arduino_Project/blob/main/Simulation%20pictures/GameStation-%20Emulator_schematic.PNG)
