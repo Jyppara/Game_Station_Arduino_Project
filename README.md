@@ -5,6 +5,7 @@ GameStation is a gaming device that allows the user play different games on a si
 Goals for this project is to learn more about programming microcontrollers and getting
 more familiar of using basic electronic components such as LCD, LEDs, capacitor, resistors, potentiometer
 and piezo. <br>
+Check out the video to see the GameStation in action: [![Video link](https://img.youtube.com/vi/sNhcjjXW0VE/default.jpg )](https://www.youtube.com/watch?v=sNhcjjXW0VE&ab_channel=JyriMäättä)
 ## :game_die:Games programmed so far:game_die::
 1. MEMORY -game:black_joker:<br>
 The classic memory card game now in your Arduino! Use the potentiometer to choose a card
