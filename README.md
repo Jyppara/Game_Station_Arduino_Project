@@ -4,8 +4,11 @@ GameStation project for Arduino Uno R3 with a 2x16 LCD screen and some basic ele
 GameStation is a gaming device that allows the user play different games on a single device.
 Goals for this project is to learn more about programming microcontrollers and getting
 more familiar of using basic electronic components such as LCD, LEDs, capacitor, resistors, potentiometer
-and piezo. This project alone granted me grade 4/Very good (on 0-5 scale) in Microcontroller System University course.<br>
-Check out the video to see the GameStation in action: [![Video link](https://img.youtube.com/vi/sNhcjjXW0VE/default.jpg )](https://www.youtube.com/watch?v=sNhcjjXW0VE&ab_channel=JyriMäättä)
+and piezo. This project alone granted me grade 4/Very good (on 0-5 scale) in Microcontroller System University course.
+Additionally, I have written a Bachelor's thesis based on this project, the link is below. <br>
+Check out the video to see the GameStation in action: [![Video link](https://img.youtube.com/vi/sNhcjjXW0VE/default.jpg )](https://www.youtube.com/watch?v=sNhcjjXW0VE&ab_channel=JyriMäättä)<br>
+Check out my Bachelor's thesis (in Finnish only): https://trepo.tuni.fi/handle/10024/157347<br><br>
+NOTICE: This project has several areas of improvements. Currently the codebase lacks testing and no concurrent programming have been implemented.<br>
 ## Games programmed so far:
 1. MEMORY -game<br>
 The classic memory card game now in your Arduino! Use the potentiometer to choose a card
